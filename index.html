@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAMÈSS — Stop Time, il nuovo sito sta arrivando</title>
+<meta name="description" content="LAMÈSS, il primo caffè cosmetico brevettato. La nuova piattaforma sta per arrivare: lascia la tua email per essere avvisato.">
+<meta name="theme-color" content="#13110E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#13110E;--ink2:#1d1814;--terracotta:#C2663A;--cream:#FCF6F3;--white:#fff;--taupe:#BBB4AF;--brown:#894C2D;--sand:#E3AA8D;--gold:#d9b27c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.serif{font-family:Marcellus,Georgia,serif;font-weight:400}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;min-height:100svh;color:var(--cream);display:flex;flex-direction:column;overflow:hidden;background:#0d0a08}
+.scene{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#dust{z-index:1;mix-blend-mode:screen}
+.grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 95% at 55% 50%,transparent 50%,rgba(6,4,3,.65) 100%),linear-gradient(90deg,rgba(8,6,5,.55),rgba(8,6,5,0) 55%)}
+nav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding:28px 0}
+.logo{display:flex;align-items:center;gap:14px;color:var(--cream);text-decoration:none}
+.logo .mark{width:46px;height:46px;border:1.5px solid var(--gold);display:grid;place-items:center;font-family:Marcellus,serif;font-size:1.7rem;background:rgba(252,246,243,.05);backdrop-filter:blur(4px)}
+.logo .word{font-family:Marcellus,serif;letter-spacing:.34em;font-size:1.15rem}
+.badge{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;border:1px solid rgba(217,178,124,.5);color:var(--gold);padding:8px 16px;border-radius:999px;backdrop-filter:blur(6px)}
+
+.hero-body{position:relative;z-index:2;flex:1;display:flex;align-items:center;padding:20px 24px 90px}
+.copy{max-width:540px}
+.cup-space{display:none}
+.eyebrow{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:44px;height:1px;background:var(--gold)}
+h1{font-size:clamp(3rem,7.4vw,5.8rem);line-height:1.02;margin:22px 0 20px;letter-spacing:.01em}
+h1 em{font-style:normal;background:linear-gradient(100deg,#f4d9b4,#d9a066 60%,#c2663a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.1rem;font-weight:300;max-width:28em;color:rgba(252,246,243,.86)}
+
+/* ---------- FORM ---------- */
+form.glass{margin-top:34px;padding:18px;border-radius:20px;background:rgba(18,13,10,.55);border:1px solid rgba(217,178,124,.35);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 24px 60px -24px rgba(0,0,0,.7)}
+.row{display:flex;gap:10px}
+.row input[type=email]{flex:1;min-width:0;padding:15px 18px;border:1px solid rgba(252,246,243,.25);border-radius:14px;font:inherit;font-size:1rem;background:rgba(252,246,243,.08);color:var(--cream)}
+.row input::placeholder{color:rgba(252,246,243,.55)}
+.row input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,178,124,.25)}
+button{padding:15px 26px;border:0;border-radius:14px;background:linear-gradient(135deg,#f0cf9f,#d49a5c);color:#1a100a;font:inherit;font-weight:600;letter-spacing:.04em;cursor:pointer;white-space:nowrap;transition:filter .2s,transform .15s;min-height:52px}
+button:hover{filter:brightness(1.07)}button:active{transform:scale(.98)}button:disabled{opacity:.6;cursor:wait}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.78rem;color:rgba(252,246,243,.72);margin-top:14px;line-height:1.5}
+.consent input{margin-top:2px;accent-color:#d49a5c;width:18px;height:18px;flex:none}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.msg{margin-top:10px;font-size:.9rem;min-height:1.3em}
+.msg.ok{color:#a8e0b4}.msg.err{color:#ffb4a2}
+
+.scroll{position:absolute;z-index:3;left:50%;bottom:26px;transform:translateX(-50%);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(252,246,243,.7);text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll::after{content:"";width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- SEZIONI ---------- */
+section{padding:110px 0}
+.kicker{font-size:.78rem;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta);margin-bottom:18px}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:end}
+.intro h2{font-size:clamp(2rem,4.2vw,3.2rem);line-height:1.12}
+.intro p{color:#3d3833;font-size:1.05rem}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:70px;border-top:1px solid var(--taupe)}
+.pillar{padding:34px 26px 10px 0;border-right:1px solid var(--taupe);padding-left:26px}
+.pillar:first-child{padding-left:0}.pillar:last-child{border-right:0}
+.pillar .n{font-family:Marcellus,serif;font-size:.95rem;color:var(--terracotta);letter-spacing:.2em}
+.pillar h3{font-size:1.4rem;margin:12px 0 10px;line-height:1.2}
+.pillar p{font-size:.93rem;color:#4a443e}
+
+.quote{background:var(--ink);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+.quote::before{content:"";position:absolute;left:50%;top:50%;width:700px;height:700px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(194,102,58,.35),rgba(194,102,58,0) 65%)}
+.quote .wrap{position:relative}
+.quote .kicker{color:var(--gold)}
+.quote h2{font-size:clamp(2.6rem,7vw,5rem);line-height:1.05;margin-bottom:22px}
+.quote p{max-width:38em;margin:0 auto;font-weight:300;font-size:1.1rem;color:rgba(252,246,243,.82)}
+.quote .btn{display:inline-block;margin-top:38px;padding:14px 30px;border:1px solid var(--gold);border-radius:999px;color:var(--cream);text-decoration:none;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;transition:background .25s,color .25s}
+.quote .btn:hover{background:var(--gold);color:var(--ink)}
+
+footer{background:var(--ink2);color:rgba(252,246,243,.7);padding:38px 0;font-size:.84rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+footer .brand{font-family:Marcellus,serif;letter-spacing:.3em;color:var(--cream)}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  nav{padding:20px 0}
+  .badge{display:none}
+  .hero{min-height:100svh}
+  .hero-body{display:block;padding:0 20px calc(40px + env(safe-area-inset-bottom))}
+  .cup-space{display:block;height:min(80vw,340px);margin:6px auto 22px}
+  .copy{max-width:none;text-align:center}
+  .eyebrow{justify-content:center}.eyebrow::before{display:none}
+  h1{margin:14px 0 12px;font-size:clamp(2.7rem,13vw,3.6rem)}
+  .lead{margin:0 auto;font-size:1rem}
+  form.glass{margin-top:24px;padding:16px;text-align:left}
+  .row{flex-direction:column}
+  button{width:100%}
+  .scroll{display:none}
+  .intro{grid-template-columns:1fr;gap:20px}
+  .pillars{grid-template-columns:1fr 1fr}
+  .pillar{border-right:0;border-bottom:1px solid var(--taupe);padding:28px 0}
+  .pillar:first-child{padding-left:0}
+  section{padding:80px 0}
+}
+@media (max-width:520px){.pillars{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}html{scroll-behavior:auto}}
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+.js .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body><script>document.documentElement.classList.add("js")</script>
+
+<header class="hero">
+  <canvas id="silk" class="scene" aria-hidden="true"></canvas>
+  <canvas id="dust" class="scene" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="wrap" style="position:relative;z-index:3;width:100%">
+    <nav>
+      <a class="logo" href="#" aria-label="LAMÈSS"><span class="mark">L</span><span class="word">LAMÈSS</span></a>
+      <span class="badge">Nuova piattaforma · Prossimamente</span>
+    </nav>
+  </div>
+
+  <div class="wrap hero-body" style="width:100%">
+    <div class="cup-space" id="cupSpace" aria-hidden="true"></div>
+    <div class="copy">
+      <div class="eyebrow">Cosmetic Coffee</div>
+      <h1>Stop <em>Time</em></h1>
+      <p class="lead">Il caffè che trasforma un gesto quotidiano in un rituale di bellezza. Il nuovo sito LAMÈSS sta arrivando.</p>
+
+      <form id="f" class="glass" action="subscribe.php" method="post" novalidate>
+        <div class="row">
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="120" placeholder="La tua email" aria-label="Email">
+          <button type="submit">Avvisami al lancio</button>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Non compilare <input name="sito" tabindex="-1" autocomplete="off"></label></div>
+        <label class="consent"><input type="checkbox" name="consenso" value="1" required>
+          <span>Acconsento al trattamento della mia email per ricevere informazioni su LAMÈSS e sul lancio della nuova piattaforma. Posso revocare il consenso in qualsiasi momento.</span></label>
+        <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+  <a class="scroll" href="#caffe">Scopri</a>
+</header>
+
+<main>
+<section id="caffe">
+  <div class="wrap">
+    <div class="intro reveal">
+      <div>
+        <div class="kicker">Il prodotto</div>
+        <h2>Un caffè pensato per andare oltre il gusto</h2>
+      </div>
+      <p>LAMÈSS nasce dall'incontro tra la qualità della miscela e ingredienti ispirati al mondo della cosmetica. Un gesto semplice che introduce una nuova idea di benessere, da vivere ogni giorno con naturalezza.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar"><div class="n">01</div><h3>Primo caffè cosmetico brevettato</h3><p>Una formula esclusiva che garantisce la stabilità dei principi attivi.</p></div>
+      <div class="pillar"><div class="n">02</div><h3>Acido ialuronico</h3><p>Noto per il suo ruolo nella cura della pelle, entra nell'esperienza di ogni giorno.</p></div>
+      <div class="pillar"><div class="n">03</div><h3>Arabica 100% AAA</h3><p>Miscela di tripla classe selezionata dai migliori produttori colombiani.</p></div>
+      <div class="pillar"><div class="n">04</div><h3>Zero zuccheri</h3><p>Gusto autentico senza alterazioni, adatto a stili di vita salutari.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <div class="wrap reveal">
+    <div class="kicker">La nostra filosofia</div>
+    <h2>Stop Time</h2>
+    <p>Un invito a rallentare e a vivere il tempo con maggiore consapevolezza. La scelta di fermarsi, anche solo per un momento, e trasformare un gesto abituale in un rituale di bellezza personale.</p>
+    <a class="btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});setTimeout(()=>document.getElementById('email').focus({preventScroll:true}),500);return false">Resta aggiornato</a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span class="brand">LAMÈSS</span><span>© <span id="y"></span> LAMÈSS · Tutti i diritti riservati</span></div></footer>
+
+<script>
+document.getElementById('y').textContent=new Date().getFullYear();
+const f=document.getElementById('f'),msg=document.getElementById('msg'),btn=f.querySelector('button');
+function show(t,c){msg.textContent=t;msg.className='msg '+c}
+f.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const email=f.email.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return show('Inserisci un indirizzo email valido.','err');
+  if(!f.consenso.checked) return show('Per iscriverti serve il consenso al trattamento.','err');
+  btn.disabled=true; show('Invio in corso…','');
+  try{
+    const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    const j=await r.json();
+    if(j.ok){f.reset();show('Grazie! Ti avviseremo appena il sito sarà online.','ok')}
+    else show(j.error||'Qualcosa è andato storto, riprova.','err');
+  }catch(_){show('Impossibile inviare ora, riprova tra poco.','err')}
+  btn.disabled=false;
+});
+
+// ---------- Sfondo: tazza di caffè vista dall'alto (WebGL) + pulviscolo dorato ----------
+(function(){
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hero=document.querySelector('.hero'),space=document.getElementById('cupSpace');
+  const mq=matchMedia('(max-width:900px)');
+  let mx=.5,my=.5,tx=.5,ty=.5;
+  addEventListener('pointermove',e=>{tx=e.clientX/innerWidth;ty=e.clientY/innerHeight},{passive:true});
+
+  const cv=document.getElementById('silk');
+  const gl=cv.getContext('webgl',{antialias:false,alpha:false,powerPreference:'low-power'});
+  let cup={x:0,y:0,r:100};
+  function layout(){
+    const hw=hero.clientWidth,hh=hero.clientHeight;
+    if(mq.matches){const r=space.getBoundingClientRect(),h=hero.getBoundingClientRect();
+      cup={x:hw/2,y:r.top-h.top+r.height/2,r:r.height/2*.98}}
+    else cup={x:hw*.72,y:hh*.52,r:Math.min(hh*.34,hw*.21)};
+  }
+  if(gl){
+    const vs='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    const fs=`
+#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+uniform vec2 R;uniform float T;uniform vec2 M;uniform vec3 C;
+float h(vec2 p){p=fract(p*vec2(.1031,.1030));p+=dot(p,p.yx+33.33);return fract((p.x+p.y)*p.x);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+  return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float a=.5,s=0.;for(int i=0;i<4;i++){s+=a*n(p);p=mat2(1.6,1.2,-1.2,1.6)*p;a*=.5;}return s;}
+float seg(vec2 p,vec2 a,vec2 b){vec2 pa=p-a,ba=b-a;float t=clamp(dot(pa,ba)/dot(ba,ba),0.,1.);return length(pa-ba*t);}
+void main(){
+  vec2 fc=gl_FragCoord.xy;
+  vec2 ctr=C.xy+(M-.5)*C.z*vec2(-.05,.05);
+  float S=C.z;vec2 d=(fc-ctr)/S;float px=1.3/S;
+  float r=length(d);
+  // --- marmo scuro
+  vec2 bp=fc/min(R.x,R.y)*2.;
+  float v=fbm(bp*1.3+vec2(T*.004,0.));
+  float vein=pow(1.-abs(2.*fbm(bp*1.1+v*1.9+7.)-1.),11.);
+  vec3 col=mix(vec3(.045,.033,.028),vec3(.115,.083,.066),v);
+  col+=vec3(.86,.62,.36)*vein*.20;
+  col+=vec3(.55,.30,.14)*exp(-dot(d,d)*.42)*.38;
+  // --- chicchi
+  for(int i=0;i<9;i++){
+    float fi=float(i);
+    float ang=-1.95+fi*.46+sin(fi*3.7)*.16;
+    float rad=1.18+.22*fract(sin(fi*12.9)*437.5);
+    vec2 pos=vec2(cos(ang),sin(ang))*rad;
+    float rot=fi*1.9+.4;vec2 q=d-pos;
+    float cs=cos(rot),sn=sin(rot);q=vec2(cs*q.x+sn*q.y,-sn*q.x+cs*q.y);
+    vec2 sq=q/vec2(.125,.082);float e=length(sq);
+    // ombra
+    vec2 qs=q-vec2(.02,-.03);col*=1.-.55*smoothstep(1.25,.5,length(qs/vec2(.125,.082)));
+    float m=smoothstep(1.+px*8.,1.-px*8.,e);
+    float shade=clamp(.5+.5*(-sq.x*.35+sq.y*.6),0.,1.);
+    vec3 bc=mix(vec3(.10,.055,.035),vec3(.36,.2,.11),shade*(1.-e*.35));
+    float crease=smoothstep(.1,.0,abs(q.y-.016*sin(q.x*26.))-.004)*smoothstep(1.,.55,e);
+    bc*=1.-.8*crease;
+    bc+=vec3(1.,.85,.6)*pow(max(0.,shade-.55),2.)*.35*(1.-crease);
+    col=mix(col,bc,m);
+  }
+  // --- ombra piattino
+  col*=1.-.78*smoothstep(1.2,.92,length(d-vec2(.05,-.09)));
+  // --- piattino
+  float ms=smoothstep(1.+px,1.-px,r);
+  vec3 sc=vec3(.95,.92,.88)*(.88+.12*(-d.x*.4+d.y*.6));
+  sc*=1.-.12*smoothstep(.95,1.,r);
+  sc*=1.-.10*smoothstep(.78,.62,r)*0.;
+  sc=mix(sc,vec3(.76,.40,.23),smoothstep(.010,.0,abs(r-.955)-.003));
+  // marchio LAMESS sul piattino: quadrato terracotta con la L
+  vec2 lq=(d-vec2(-.04,-.80))/.075;
+  float sqd=max(abs(lq.x),abs(lq.y));
+  float frame=smoothstep(.07,.0,abs(sqd-.95)-.06);
+  float lv=step(abs(lq.x+.12),.075)*step(abs(lq.y-.02),.52);
+  float lh=step(abs(lq.x-.12),.30)*step(abs(lq.y+.40),.11);
+  float inner=step(sqd,1.0);
+  sc=mix(sc,vec3(.99,.97,.95),inner*.85);
+  sc=mix(sc,vec3(.76,.40,.23),frame*inner);
+  sc=mix(sc,vec3(.10,.08,.07),max(lv,lh)*inner*step(sqd,.82));
+  col=mix(col,sc,ms);
+  // --- manico (ombra + corpo)
+  vec2 ha=vec2(.56,-.03),hb=vec2(.90,-.12);
+  float hd=seg(d,ha,hb);
+  col=mix(col,col*.55,smoothstep(.14,.05,seg(d-vec2(.025,-.04),ha,hb))*ms);
+  float mh=smoothstep(.058+px,.058-px,hd);
+  vec2 hv=normalize(hb-ha);float side=dot(d-ha,vec2(-hv.y,hv.x))/.058;
+  vec3 hc=vec3(.96,.93,.89)*(.78+.22*clamp(side*.5+.5,0.,1.));
+  hc=mix(hc,vec3(.82,.62,.36),smoothstep(.12,.0,abs(abs(side)-.55)-.02)*.0);
+  col=mix(col,hc,mh);
+  // --- ombra tazza
+  col*=1.-.4*smoothstep(.80,.63,length(d-vec2(.035,-.055)))*(1.-smoothstep(.64+px,.64-px,r)*1.);
+  // --- tazza: bordo
+  float mc=smoothstep(.64+px,.64-px,r);
+  vec3 rim=vec3(.99,.97,.94)*(.9+.1*clamp(dot(normalize(d+1e-4),vec2(-.6,.8)),-1.,1.));
+  rim=mix(rim,vec3(.76,.40,.23)*(.9+.12*clamp(dot(normalize(d+1e-4),vec2(-.6,.8)),-1.,1.)),smoothstep(.012,.0,abs(r-.6125)-.0225));
+  rim=mix(rim,vec3(.99,.97,.94),smoothstep(.006,.0,abs(r-.585)-.002)*.8);
+  rim+=vec3(.06)*pow(max(0.,dot(normalize(d+1e-4),vec2(-.65,.76))),8.)*smoothstep(.54,.6,r);
+  col=mix(col,rim,mc);
+  // --- parete interna
+  float mw=smoothstep(.535+px,.535-px,r);
+  vec3 wall=mix(vec3(.62,.50,.42),vec3(.93,.88,.82),smoothstep(.45,.535,r));
+  wall*=.78+.3*clamp(dot(normalize(d+1e-4),vec2(.5,-.8))*.5+.5,0.,1.);
+  col=mix(col,wall,mw);
+  // --- caffe': espresso con crema naturale
+  float mf=smoothstep(.5+px,.5-px,r);
+  float rr=r/.5;float ang=atan(d.y,d.x);
+  float tw=ang+T*.02+rr*1.6;
+  vec2 pc=vec2(cos(tw),sin(tw))*(.6+rr*1.9);
+  float f1=fbm(pc*1.6+vec2(2.,7.));
+  float f2=fbm(pc*3.4+2.3*f1);
+  float flame=fbm(vec2(cos(ang),sin(ang))*2.1+vec2(rr*2.8+f1*1.2,T*.015)+4.);   // venature radiali della crema
+  vec3 dark=vec3(.14,.055,.026),mid=vec3(.40,.20,.085),gold=vec3(.66,.38,.15);
+  vec3 cof=mix(dark,mid,smoothstep(.15,.65,f1*.6+flame*.6));
+  cof=mix(cof,gold,smoothstep(.55,.95,f2*.5+flame*.55+rr*.18)*.75);
+  cof=mix(cof,dark*.8,smoothstep(.0,.35,.35-rr)*.55);           // centro piu' scuro
+  cof=mix(cof,vec3(.09,.04,.02),smoothstep(.86,1.,rr)*.9);       // contatto con la parete
+  cof=mix(cof,vec3(.50,.28,.11),smoothstep(.60,.80,rr)*smoothstep(1.,.85,rr)*.35); // anello di crema
+  // bollicine
+  float bub=smoothstep(.80,.9,n(pc*34.+5.))*smoothstep(.45,.9,rr)*smoothstep(1.,.9,rr);
+  cof+=vec3(.55,.34,.15)*bub*.45;
+  cof*=.97+.05*n(pc*60.);
+  // riflesso morbido (finestra) e lucidita'
+  vec2 g=(d-vec2(-.17,.2));
+  cof+=vec3(1.,.82,.6)*smoothstep(.55,.0,length(g*vec2(1.2,2.8)))*.11;
+  cof+=vec3(.9,.6,.3)*pow(max(0.,dot(normalize(d+1e-4),vec2(-.55,.83))),10.)*smoothstep(.3,.5,r)*.10;
+  col=mix(col,cof,mf);
+  // --- cucchiaino sul piattino
+  {
+    vec2 sa=vec2(-.74,-.40),sb=vec2(-.47,-.69);
+    vec2 bc=sa;float cs2=cos(.85),sn2=sin(.85);vec2 qb=d-bc;qb=vec2(cs2*qb.x+sn2*qb.y,-sn2*qb.x+cs2*qb.y);
+    float bowl=length(qb/vec2(.115,.072));
+    float stem=seg(d,sa+vec2(.06,-.06),sb)-.017;
+    float sm=max(smoothstep(1.+px*6.,1.-px*6.,bowl),smoothstep(px*2.,-px*2.,stem));
+    col*=1.-.5*max(smoothstep(1.3,.6,length((qb-vec2(.015,-.02))/vec2(.115,.072))),smoothstep(.04,.0,seg(d-vec2(.012,-.018),sa+vec2(.06,-.06),sb)-.015));
+    float sh2=clamp(.5+.5*(-qb.x*5.+qb.y*7.),0.,1.);
+    vec3 steel=mix(vec3(.45,.45,.47),vec3(.95,.95,.96),sh2);
+    steel=mix(steel,vec3(.62,.55,.50),smoothstep(.9,.2,bowl)*.35);
+    col=mix(col,steel,sm);
+  }
+  // --- vapore
+  {
+    float up=d.y;
+    vec2 u=vec2(d.x*1.7+.35*sin(d.y*2.6+T*.35),d.y*1.15-T*.14);
+    float w1=fbm(u*2.0+vec2(1.,T*.02));
+    float w2=fbm(u*4.1+vec2(7.,3.)+w1*1.4);
+    float wisp=smoothstep(.34,.78,w1*.65+w2*.45);
+    float mask=smoothstep(-.35,.3,up)*smoothstep(1.55,.15,up)*exp(-pow(d.x-.04*up,2.)*1.5);
+    col=mix(col,vec3(.97,.93,.88),clamp(wisp*mask*.62,0.,.75));
+  }
+  // luce calda esterna
+  col+=vec3(.9,.6,.32)*smoothstep(.3,.0,abs(r-.52))*0.;
+  col=pow(col,vec3(.96));
+  gl_FragColor=vec4(col,1.);}`;
+    const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))console.warn(gl.getShaderInfoLog(o));return o};
+    const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+    if(gl.getProgramParameter(pr,gl.LINK_STATUS)){
+      gl.useProgram(pr);
+      const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);
+      gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+      const loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+      const uR=gl.getUniformLocation(pr,'R'),uT=gl.getUniformLocation(pr,'T'),uM=gl.getUniformLocation(pr,'M'),uC=gl.getUniformLocation(pr,'C');
+      const coarse=matchMedia('(pointer:coarse)').matches;
+      const dpr=Math.min(devicePixelRatio||1,coarse?1.5:2)*(coarse?.85:1);
+      function size(){layout();cv.width=Math.max(2,Math.round(hero.clientWidth*dpr));cv.height=Math.max(2,Math.round(hero.clientHeight*dpr));gl.viewport(0,0,cv.width,cv.height);draw(performance.now())}
+      let t0=performance.now(),vis=true;
+      function draw(now){
+        mx+=(tx-mx)*.05;my+=(ty-my)*.05;
+        gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,reduce?20:(now-t0)/1000+20);gl.uniform2f(uM,mx,1-my);
+        gl.uniform3f(uC,cup.x*dpr,cv.height-cup.y*dpr,cup.r*dpr);
+        gl.drawArrays(gl.TRIANGLES,0,3);}
+      new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
+      addEventListener('resize',size);
+      if('ResizeObserver' in window)new ResizeObserver(size).observe(hero);
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(size);
+      size();
+      (function frame(now){if(vis)draw(now);if(!reduce)requestAnimationFrame(frame)})(performance.now());
+    }
+  }
+
+  // pulviscolo dorato
+  const dc=document.getElementById('dust'),ctx=dc.getContext('2d');
+  let W,Hh,parts=[];
+  function dsize(){const d=Math.min(devicePixelRatio||1,2);W=dc.width=hero.clientWidth*d;Hh=dc.height=hero.clientHeight*d;
+    const N=Math.round(Math.min(60,hero.clientWidth/16));
+    parts=Array.from({length:N},()=>({x:Math.random()*W,y:Math.random()*Hh,r:(Math.random()*2.4+.6)*d,v:(Math.random()*.25+.06)*d,s:Math.random()*Math.PI*2,a:Math.random()*.55+.2}))}
+  dsize();addEventListener('resize',dsize);
+  function dust(now){
+    ctx.clearRect(0,0,W,Hh);
+    for(const p of parts){
+      p.y-=p.v;p.x+=Math.sin(now/2600+p.s)*.3;
+      if(p.y<-10){p.y=Hh+10;p.x=Math.random()*W}
+      const tw=.6+.4*Math.sin(now/900+p.s);
+      const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*4);
+      g.addColorStop(0,`rgba(255,226,180,${p.a*tw})`);g.addColorStop(1,'rgba(255,200,140,0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,7);ctx.fill();
+    }
+    if(!reduce)requestAnimationFrame(dust)}
+  requestAnimationFrame(dust);
+})();
+
+// comparsa graduale delle sezioni
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15}):null;
+document.querySelectorAll('.reveal').forEach(el=>io?io.observe(el):el.classList.add('in'));
+</script>
+</body>
+</html>

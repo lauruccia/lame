@@ -1,0 +1,3 @@
+# Le iscrizioni raccolte NON vanno mai nel repository
+data/*.csv
+data/rl_*

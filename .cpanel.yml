@@ -1,0 +1,10 @@
+---
+deployment:
+  tasks:
+    # Cartella pubblica del sito. Se il dominio e' un "dominio aggiuntivo" o una
+    # sottocartella, cambia solo questa riga (es. $HOME/public_html/nomecartella/).
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp subscribe.php $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/data
+    - /bin/cp data/.htaccess $DEPLOYPATH/data/.htaccess
